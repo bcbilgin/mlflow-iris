@@ -1,0 +1,14 @@
+name: iris
+conda_env: environment.yml
+
+entry_points:
+  train:
+    parameters:
+      input_file: path
+      output_file: path
+    command: "python Training.py {input_file} {output_file}"
+  infer:
+    parameters:
+      classifier_path: path
+      input_file: path
+    command: "python Inference.py {classifier_path} {input_file}"

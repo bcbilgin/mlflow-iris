@@ -1,0 +1,9 @@
+FROM python:3.6
+LABEL maintainer="Thomas Legrand"
+WORKDIR /app
+# Install dependencies
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
+# Copy source code
+COPY Training.py /app
+ENTRYPOINT ["python", "Training.py"]

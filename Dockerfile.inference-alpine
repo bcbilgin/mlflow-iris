@@ -1,0 +1,12 @@
+FROM python:3.6-alpine
+LABEL maintainer="Thomas Legrand"
+WORKDIR /app
+# Get system dependencies for python packages
+RUN apk update \
+    && apk add alpine-sdk gfortran openblas-dev
+# Install dependencies
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
+# Copy source code
+COPY Inference.py /app
+ENTRYPOINT ["python", "Inference.py"]
